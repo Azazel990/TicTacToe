@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>intro</title>
+	<link rel="stylesheet" type="text/css" href="css/w3.css">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<script src="js/jquery.js"></script>
+<script src="js/bootstrap.js"></script>
+<style type="text/css">
+		body
+		{
+			margin: 0;
+			padding: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			
+			background-color: black;
+			color: white;
+			overflow: ;
+		}
+		ul li
+		{
+			display: inline-block;
+			font-size: 50px;
+		}
+		.O
+		{
+			color: rgb(0,225,225);
+			text-shadow: 0 0 30px rgb(0,225,225),0 0 30px rgb(0,225,225); 
+		}
+		.X
+		{
+			color: rgb(255,0,0);
+			text-shadow: 0 0 30px rgb(255,0,0),0 0 30px rgb(255,0,0);
+
+		}
+		.box h1
+		{
+			position: absolute;
+			color: #111;
+			font-size: 6em;	
+			margin-top: -200px;
+			margin-left: 150px;
+		}
+		.box h1 span
+		{
+			display: table-cell;
+			margin: 0;
+			padding: 0;
+			animation: animate 2.5s linear;
+			animation-iteration-count: infinite;
+		}
+
+		h1 span:nth-child(1)
+		{
+			animation-delay: 0.25s;
+		}
+		h1 span:nth-child(2)
+		{
+			animation-delay: 0.5s;
+		}
+		h1 span:nth-child(3)
+		{
+			animation-delay: 0.75s;
+		}
+		h1 span:nth-child(4)
+		{
+			animation-delay: 1s;
+		}
+		h1 span:nth-child(5)
+		{
+			animation-delay: 1.25s;
+		}
+		h1 span:nth-child(6)
+		{
+			animation-delay: 1.5s;
+		}
+		h1 span:nth-child(7)
+		{
+			animation-delay: 1.75s;
+		}
+		h1 span:nth-child(8)
+		{
+			animation-delay: 2s;
+		}
+		h1 span:nth-child(9)
+		{
+			animation-delay: 2.25s;
+		}
+		@keyframes animate 
+		{
+			0%,100%
+			{
+				color: #fff;
+				filter: blur(2px);
+				text-shadow: 0 0 10px #00b3ff,
+							0 0 20px #00b3ff,
+							0 0 40px #00b3ff,
+							0 0 80px #00b3ff,
+							0 0 120px #00b3ff,
+							0 0 200px #00b3ff,
+							0 0 300px #00b3ff,
+							0 0 400px #00b3ff;
+			}
+			5%,95%
+			{
+				color: #111;
+				filter: blur(0px);
+				text-shadow:  none;
+			}
+		}
+		.box
+		{
+			animation: intro 4s ;
+			animation-fill-mode: forwards;
+			position: absolute;
+		}
+		@keyframes intro 
+		{
+			0%
+			{
+				transform: scale(0);
+				top: 50%;
+				left: 24%;
+			}
+			20%
+			{
+				transform: scale(1.2);
+				top: 50%;
+				left: 24%;
+			}
+			50%
+			{
+				transform: scale(1.2);
+				top: 50%;
+				left: 24%;
+			}
+			90%
+			{
+				transform: scale(1.2);
+				top: 50%;
+				left: 24%;
+			}
+			100%
+			{
+				transform: scale(0.5);
+				top: 6%;
+				left: 24%;
+			}
+		}
+		.bg
+		{
+			opacity: 0;
+			animation: fadein 0.2s;
+			animation-fill-mode: forwards;
+			animation-delay: 4s;
+		}
+		@keyframes fadein 
+		{
+			0%
+			{
+				opacity: 0;
+
+			}
+			100%
+			{
+				opacity: 1;
+			}
+		}
+		.menu
+		{
+			position: absolute;
+			top: 20%;
+			margin-left: -12px;
+			height: 500px;
+			width: 25%;
+			border: 4px solid rgb(126,253,0);
+			box-shadow: 0px 0px 10px rgb(126,253,0),0px 0px 10px rgb(126,253,0);
+		}
+		.menu h1
+		{
+			text-align: center;
+		}
+
+		.w3-btn
+		{
+			padding: 0;
+			padding-top: 10px;
+			height: 80px;
+			font-size: 2em;
+			border: 4px solid rgb(126,253,0);
+			margin-left: 20px;
+			width: 300px;
+			outline: none;
+		}
+		
+		</style>
+	</head>
+			<body>
+	<div class="box">
+	<ul>
+		<li class="O">O</li>
+		<li class="X">X</li>
+		<li class="O">O</li>
+		<li class="X">X</li>
+		<li class="O">O</li>
+		<li class="X">X</li>
+		<li class="O">O</li>
+		<li class="X">X</li>
+		<li class="O">O</li>
+		<li class="X">X</li>
+		<li class="O">O</li>
+		<li class="X">X</li>
+		<li class="O">O</li>
+		<li class="X">X</li>
+		<li class="O">O</li>
+		
+
+	</ul>
+	<h1>
+		<span>T</span>
+		<span>i</span>
+		<span>c</span>
+		<span>T</span>
+		<span>a</span>
+		<span>c</span>
+		<span>T</span>
+		<span>o</span>
+		<span>e</span>
+</h1>
+	</div>
+
+<div class="menu bg">
+	<h1>Select <br>The<br> Mode</h1>
+
+	<a style="margin-top: 30px;" class="w3-btn w3-round" href="cpu.html">1-Player</a>
+	<br><br>
+	<a class="w3-btn w3-round" href="ttt.html">2-Players</a>
+</div>
+
+</body>
+
+
+</html>

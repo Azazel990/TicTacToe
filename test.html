@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>icons</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrapp.css">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<style type="text/css">
+		body
+		{
+			margin: 0;
+			padding: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			min-height: 100vh;
+			background: #262626;
+		}
+		ul
+		{
+			list-style: none;
+		}
+		ul li a
+		{
+			position: relative;
+			display: flex;
+			width: 160px;
+			height: 160px;
+			text-align : center;
+			line-height: 60px;
+			background: #333;
+			font-size: 100px;
+			border-radius: 50%;
+			color: #666;
+			transition: 0.5s;
+		}
+		ul li i
+		{
+			position: absolute;
+			top: 20%;
+			left: 18%;
+		}
+		ul li a:before
+		{
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			border-radius: 50%;
+			background: #ffee10;
+			transition: 0.5s;
+			transform: scale(0.9);
+			z-index: -1;
+		}
+		ul li a:hover:before
+		{
+			transform: scale(1.1);
+			box-shadow: 0 0 15px #ffee10;
+		}
+		ul li a:hover
+		{
+			color: #ffee10;
+			box-shadow: 0 0 5px #ffee10;
+		}
+		input[type="checkbox"]
+		{
+			position: absolute;
+			content: '';
+			-webkit-appearance : none;
+			height: 125px;
+			width: 125px;
+			border-radius: 50%;
+			cursor: pointer;
+			outline: none;
+		}
+		input[type="checkbox"]:checked
+		{
+			outline: none;
+			
+		}
+		input[type="checkbox"]:unchecked
+		{
+			background-color: red;
+		}
+		input[type="checkbox"]::before
+		{
+			content: '';
+			background: transparent;
+			position: absolute;
+			margin-top: -16px;
+			margin-left: -16px;
+			border: 4px solid #00b5cc;
+			height: 125px;
+			width: 125px;
+			border-radius: 50%;
+			visibility: hidden;
+		}
+		.O
+		{
+			color: rgb(0,225,225);
+			text-shadow: 0 0 30px rgb(0,225,225),0 0 30px rgb(0,225,225); 
+		}
+		#r1
+		{
+
+		}
+
+	</style>
+	<script >
+		var i="";
+		var c = "";
+		function reset()
+		{
+			var b1  = document.getElementById("r1");
+				b1.style.visibility = 'visible';
+				//i++;
+				b1.checked = '0';
+
+				var b2 = document.getElementById("r2");
+				
+				
+				b2.style.border = 'none';
+				//b1.disabled = 'on';
+				b2.style.boxShadow = 'none';
+			
+							
+				
+				
+				
+		}
+		function check(c)
+		{
+			
+				var b1  = document.getElementById("r1");
+				b1.style.visibility = 'visible';
+				b1.style.border = '15px solid #00b5cc';
+				//b1.disabled = 'on';
+				b1.style.boxShadow = '0px 0px 20px #00b5cc, 0px 0px 20px #00b5cc';
+				i++;	
+			}
+				
+				else if (c==2) 
+				{
+					var b2  = document.getElementById("r2");
+				b2.style.visibility = 'visible';
+				b2.style.border = '15px solid #00b5cc';
+				//b1.disabled = 'on';
+				b2.style.boxShadow = '0px 0px 20px #00b5cc, 0px 0px 20px #00b5cc';
+				i++;	
+				}
+				
+
+
+		}
+
+	</script>
+</head>
+<body>
+	<ul>
+		<li><a onclick="reset()"><i class="fa fa-retweet" aria-hidden="true"></i></a></li>
+	</ul>
+
+	<input type="radio" name="test" style=" position: absolute; left: 30%;" id="r1" onclick="check(1)" >
+	<input type="checkbox" name="b2" style=" position: absolute; left: 20%;" id="r2" onclick="check(2)">
+</body>
+</html>
