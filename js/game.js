@@ -16,9 +16,16 @@ class Game{
         this.blockCell();
         
         this.checkIfWinning();
+        this.checkIfTieGame();
         this.incrementCounter();
     }
-
+    checkIfTieGame(){
+        let count = 0;
+        this.playGrid.forEach((place,index) => {
+            if(index != 0 && place != -1) count++;
+        });
+        return count == 9 ?  this.announceTieGame() : -1;
+    }
     checkIfWinning(){
         for(let  player = 1;player <= 2; player++){
             for(let i = 0;i <= this.winningCombinitions.length - 1; i++){
@@ -33,12 +40,19 @@ class Game{
                 }
             }
         }
-
     }
+
+    announceTieGame(){
+        this.showPopUp("Tie Game","win.gif");
+    }
+
     announceWinner(player){
+       this.showPopUp("Player "+ player +" Wins","win.gif");
+    }
+    showPopUp(msg,img){
         Swal.fire({
-            title: "Player "+ player +" Wins",
-            imageUrl: "win.gif",
+            title: msg,
+            imageUrl: img,
             imageWidth: 200,
             imageHeight: 200,
             confirmButtonText : "Play Again"  
@@ -46,7 +60,7 @@ class Game{
             if (result.isConfirmed) {
               location.reload();
             }
-          });
+        });
     }
     createBlock(){
         this.block = document.createElement("img");
