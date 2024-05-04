@@ -251,3 +251,24 @@ input[type="radio"]::before
     height: 225px !important;
 }
 /* Playgrid */
+
+#counter{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.winCountBox{
+    font-size: 25px;
+    margin: 10px 25px;    
+
+}
+.winCountBox:first-child{
+    color: #00b3ff;
+    text-align: right;
+}
+.winCountBox:last-child{
+    color: red;
+}
+#divider{
+    font-size: 55px;
+}

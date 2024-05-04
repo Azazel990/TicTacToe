@@ -21,17 +21,6 @@
 <script src="js/game.js"></script>
 </head>
 <body class="dark_mode d-flex flex-col">
-
-    <div id="counter" class="d-flex">
-        <div  class="winCountBox d-flex flex-col">
-            Player <span id="playerWinCount">0</span>
-        </div>
-        <div id="divider">|</div>
-        <div  class="winCountBox d-flex flex-col">
-            CPU <span id="cpuWinCount">0</span>
-        </div>
-    </div>
-
     <main>
         <div class="box">
 			<h1>
@@ -67,33 +56,33 @@
     <div class="container">
         <div id="playGrid" class="mt-3">
             <div class="cell br-top br-left d-flex justify-center align-center">
-                <input class="cell_block" type="radio"  id="cell1" data-position="1">
+                <input class="cell_block" type="radio" name="r1" id="cell1" data-position="1">
             </div>
             <div class="cell br-top d-flex justify-center align-center">
-                <input class="cell_block" type="radio"   id="cell2" data-position="2">
+                <input class="cell_block" type="radio" name="r1"  id="cell2" data-position="2">
             </div>
             <div class="cell br-top br-right d-flex justify-center align-center">
-                <input class="cell_block" type="radio"   id="cell3" data-position="3">
+                <input class="cell_block" type="radio" name="r1"  id="cell3" data-position="3">
             </div>
 
             <div class="cell br-left d-flex justify-center align-center">
-                <input class="cell_block" type="radio"   id="cell4" data-position="4">
+                <input class="cell_block" type="radio" name="r1"  id="cell4" data-position="4">
             </div>
             <div class="cell d-flex justify-center align-center">
-                <input class="cell_block" type="radio"    id="cell5" data-position="5" >
+                <input class="cell_block" type="radio" name="r1"   id="cell5" data-position="5" >
             </div>
             <div class="cell br-right d-flex justify-center align-center">
-                <input class="cell_block" type="radio"    id="cell6" data-position="6">
+                <input class="cell_block" type="radio" name="r1"   id="cell6" data-position="6">
             </div>
 
             <div class="cell br-bottom br-left d-flex justify-center align-center">
-                <input class="cell_block" type="radio"    id="cell7" data-position="7">
+                <input class="cell_block" type="radio" name="r1"   id="cell7" data-position="7">
             </div>
             <div class="cell br-bottom d-flex justify-center align-center">
-                <input class="cell_block" type="radio"   id="cell8" data-position="8">
+                <input class="cell_block" type="radio" name="r1"  id="cell8" data-position="8">
             </div>
             <div class="cell br-bottom br-right d-flex justify-center align-center">
-                <input class="cell_block" type="radio"    id="cell9" data-position="9">
+                <input class="cell_block" type="radio" name="r1"   id="cell9" data-position="9">
             </div>
         </div>
     </div>
@@ -101,8 +90,8 @@
 </html>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    const singleplayer = new Singleplayer();
+    const multiplayer = new Multiplayer();
     $(".cell_block").on("click",function(){
-        singleplayer.makeAMove($(this));
+        multiplayer.makeAMove($(this));
     })
 </script>
