@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SInglePlayer</title>
+    <title>Multiplayer</title>
     <link rel="stylesheet" type="text/css"
     href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -21,6 +21,17 @@
 <script src="js/game.js"></script>
 </head>
 <body class="dark_mode d-flex flex-col">
+      <!-- Counter Start -->
+      <div id="counter" class="d-flex">
+        <div  class="winCountBox d-flex flex-col">
+            Player-1 <span id="player1WinCount">0</span>
+        </div>
+        <div id="divider">|</div>
+        <div  class="winCountBox d-flex flex-col">
+            Player-2 <span id="player2WinCount">0</span>
+        </div>
+    </div>
+    <!-- Counter End -->
     <main>
         <div class="box">
 			<h1>
