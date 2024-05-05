@@ -12,9 +12,7 @@ class Game{
         this.winner = 0;
         
         this.round = sessionStorage.getItem("round") ? parseInt(sessionStorage.getItem("round")) : 1;
-        // this.round = 1;
         this.counter = this.round % 2 != 0 ? 0 : 1;
-        // this.counter = 1;
 
         this.playerWinCount = sessionStorage.getItem("playerWinCount") ? parseInt(sessionStorage.getItem("playerWinCount")) : 0;
         this.cpuWinCount = sessionStorage.getItem("cpuWinCount") ? parseInt(sessionStorage.getItem("cpuWinCount")) : 0;
@@ -152,13 +150,11 @@ class Singleplayer extends Game{
         this.cpuMove();
         this.checkIfWinning();
         this.checkIfTieGame();
-        console.log(this.currentElement);
     }
     playerMove(){
         this.fillGrid();
         this.blockCell();
         this.incrementCounter();
-        // console.log(this.currentElement);
     }
     cpuMove(){
         if(this.counter <= 1){
@@ -200,8 +196,6 @@ class Singleplayer extends Game{
             isWinning = this.checkIfPlayerOrCpuIsWinning(1);
             if(isWinning){
                 this.position = isWinning;
-                console.log("Player WINNING");
-
             }else{
                 let maxProfitCombos = this.determineMaxProfitCombos();
                 this.position = this.selectBestPosition(maxProfitCombos);  
@@ -267,7 +261,15 @@ class Singleplayer extends Game{
         }
         return this.checkIfLastCellRemaining(arr);
     }
+    checkIfEmptyCellsAreAvailable(maxProfitCombos = []){
+        maxProfitCombos.forEach((profit_index) => {
+            for(let i = 0; i < 3; i++){
+                if(this.winningCombinitions[profit_index][i] == -1) return true;
+            }
+        })
 
+        return false;
+    }
     determineMaxProfitCombos(){
         let ProfitCombos = [];
         
@@ -278,12 +280,20 @@ class Singleplayer extends Game{
             }
             ProfitCombos.push(profit);
         }
-        const maxProfit = Math.max(...ProfitCombos);
-        
         let maxProfitCombos = [];
-        for(let i = 0; i < ProfitCombos.length; i++){
-            if(ProfitCombos[i] == maxProfit) maxProfitCombos.push(i);
+        while(ProfitCombos.length){
+            const maxProfit = Math.max(...ProfitCombos);
+            for(let i = 0; i < ProfitCombos.length; i++){
+                if(ProfitCombos[i] == maxProfit) maxProfitCombos.push(i);
+            }
+
+            if(!this.checkIfEmptyCellsAreAvailable(maxProfitCombos)){
+                ProfitCombos = ProfitCombos.filter(profit => {
+                    return profit != maxProfit;
+                })               
+            }else return maxProfitCombos;
         }
+       
         return maxProfitCombos;
     }   
 
@@ -297,7 +307,8 @@ class Singleplayer extends Game{
     dumbAI(){
         while(1){
             const index = this.rng();
-            if(this.playGrid[index] == -1){
+            const dontPlay = [2,4,6,8];
+            if(this.playGrid[index] == -1 && dontPlay.indexOf(index) < 0){
                 this.position = index;
                 return;
             }    
