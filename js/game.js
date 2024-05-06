@@ -37,7 +37,7 @@ class Game{
     }
     quitGame(){
         this.clearData();
-        window.location.href = './game.html';
+        window.location.href = './index.html';
     }
 
     checkIfTieGame(){
