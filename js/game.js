@@ -4,13 +4,17 @@ class Game{
     }
     config(){
         this.playGrid = Array(10).fill(-1);
+        this.cellHeight = 223;
+        this.cellWidth = 422;
+        this.gridGap = 10;
         this.currentElement = "";
         this.position = 1;
         this.block = "";
-        this.winningCombinitions = [[1,2,3],[1,5,9],[1,4,7],[2,5,8],[3,6,9],[3,5,7],[4,5,6],[7,8,9]];
+        this.winningCombinitions = [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]];
         this.timeout = 500;
-        this.winner = 0;
-        
+        this.winningTimeout = 1000;
+        this.winner = 1;
+        this.currentWinningCombo = 2;
         this.round = sessionStorage.getItem("round") ? parseInt(sessionStorage.getItem("round")) : 1;
         this.counter = this.round % 2 != 0 ? 0 : 1;
 
@@ -20,6 +24,15 @@ class Game{
         this.player1WinCount = sessionStorage.getItem("player1WinCount") ? parseInt(sessionStorage.getItem("player1WinCount")) : 0;
         this.player2WinCount = sessionStorage.getItem("player2WinCount") ? parseInt(sessionStorage.getItem("player2WinCount")) : 0;
         this.gameMode = sessionStorage.getItem("gameMode") ? sessionStorage.getItem("gameMode") : 1;
+
+        this.horizontalAnimation = "horizontalAnimation";
+        this.verticalAnimation = "verticalAnimation";
+        this.StrokeColors = {
+            blue : 'rgb(0, 225, 225)',
+            red : 'rgb(255, 0, 0)'
+        }        
+
+        this.assets = 'assets/';
     }
     setData(){
         sessionStorage.setItem("round",parseInt(this.round) + 1);
@@ -48,11 +61,50 @@ class Game{
         return count == 9 ?  true : false;
     }
     announceTieGame(){
-        this.showPopUp("Tie Game","tie.png");
+        this.showPopUp("Tie Game", this.assets + "tie.png");
     }
     announceWinner(){
-       this.showPopUp("Player "+ this.winner +" Wins","win.gif");
+        this.triggerWinningStroke();
+        setTimeout(() => {
+            this.showPopUp("Player "+ this.winner +" Wins", this.assets + "win.gif");
+        }, this.winningTimeout);
     }
+
+    triggerWinningStroke(){
+        const startingPostition = this.winningCombinitions[this.currentWinningCombo][0];
+
+        const strokeColor = this.winner == 1 ? this.StrokeColors.blue : this.StrokeColors.red;
+
+        if(this.currentWinningCombo >= 0 && this.currentWinningCombo <= 2){
+            const strokeTop = (parseInt(startingPostition / 3)) * this.cellHeight + (this.cellHeight) / 2 + (parseInt(startingPostition / 3)) * this.gridGap;
+            const stroke = this.getStrokeElement("winningStrokeHorizontal");
+
+            stroke.style.top = strokeTop + 'px';
+            this.setStrokeColor(stroke,strokeColor);
+            this.makeStrokeVisible(stroke);
+            stroke.setAttribute("class",this.horizontalAnimation);
+        }else if(this.currentWinningCombo >= 3 && this.currentWinningCombo <= 5){
+            const strokeTop = ((startingPostition - 1) * this.cellWidth) + (this.cellWidth) / 2 + (startingPostition - 1) * this.gridGap;
+            const stroke = this.getStrokeElement("winningStrokeVertical");
+            this.setStrokeColor(stroke,strokeColor);
+            stroke.style.left = strokeTop + 'px';
+            this.makeStrokeVisible(stroke);
+            stroke.setAttribute("class",this.verticalAnimation);
+        }
+    }
+
+    setStrokeColor(stroke,color){
+        stroke.style.background = color;
+    }
+
+    makeStrokeVisible(stroke = ""){
+        stroke.style.visibility = 'visible';
+    }
+
+    getStrokeElement(element_id){
+        return document.getElementById(element_id);
+    }
+
     showPopUp(msg,img){
         Swal.fire({
             title: msg,
@@ -74,7 +126,7 @@ class Game{
     }
     createBlock(){
         this.block = document.createElement("img");
-        this.block.setAttribute("src","c" + this.determineWhosTurnItIs() + ".jpg");
+        this.block.setAttribute("src",this.assets + "c" + this.determineWhosTurnItIs() + ".jpg");
         this.block.setAttribute("class","tictac");
         this.block.setAttribute("id","cell"+this.position);
     }
@@ -102,6 +154,7 @@ class Game{
                     }else break;
                 }
                 if(flag == 3){
+                    this.currentWinningCombo = i;
                     return player;
                 }
             }

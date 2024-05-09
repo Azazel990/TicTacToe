@@ -272,3 +272,48 @@ input[type="radio"]::before
 #divider{
     font-size: 55px;
 }
+
+
+.cell{
+    /* border: 2px solid red; */
+}
+
+#playGrid{
+    position: relative !important;
+    /* border: 2px solid blue; */
+}
+
+#winningStrokeHorizontal,#winningStrokeVertical{
+    position: absolute;
+    background: #fff;
+    animation-duration: 1s;
+    visibility: hidden;
+}
+#winningStrokeHorizontal{
+    height: 8px;
+    width: 100%;
+    top: 0px;
+}
+#winningStrokeVertical{
+    height: 100%;
+    width: 8px;
+    top: 0px;
+}
+.horizontalAnimation{
+    animation-name: winningStrokeHorizontal;
+}
+.verticalAnimation{
+    animation-name: winningStrokeVertical;
+}
+
+/* Winning Stroke ANimation */
+@keyframes winningStrokeHorizontal {
+    from {width: 0;}
+    to {width: 100%;}
+  }
+
+@keyframes winningStrokeVertical {
+    from {height: 0;}
+    to {height: 100%;}
+}
+/* Winning Stroke ANimation */
