@@ -274,13 +274,9 @@ input[type="radio"]::before
 }
 
 
-.cell{
-    /* border: 2px solid red; */
-}
 
 #playGrid{
     position: relative !important;
-    /* border: 2px solid blue; */
 }
 
 #winningStrokeHorizontal,#winningStrokeVertical{

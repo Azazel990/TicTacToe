@@ -13,7 +13,7 @@ class Game{
         this.winningCombinitions = [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]];
         this.timeout = 500;
         this.winningTimeout = 1000;
-        this.winner = 1;
+        this.winner = 0;
         this.currentWinningCombo = 2;
         this.round = sessionStorage.getItem("round") ? parseInt(sessionStorage.getItem("round")) : 1;
         this.counter = this.round % 2 != 0 ? 0 : 1;
