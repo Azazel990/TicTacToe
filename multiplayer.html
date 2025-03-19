@@ -103,4 +103,8 @@
     $(".cell_block").on("click",function(){
         multiplayer.makeAMove($(this));
     })
+
+    $(".cell").on("click",function(){
+        $(this).children(".cell_block").click();
+    })
 </script>

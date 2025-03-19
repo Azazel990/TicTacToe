@@ -104,5 +104,9 @@
     const singleplayer = new Singleplayer();
     $(".cell_block").on("click",function(){
         singleplayer.makeAMove($(this));
+    });
+
+    $(".cell").on("click",function(){
+        $(this).children(".cell_block").click();
     })
 </script>
