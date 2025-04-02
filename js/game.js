@@ -3,10 +3,13 @@ class Game{
         this.config();
     }
     config(){
+        
+        const gridElement = document.querySelector("#playGrid");
+
         this.playGrid = Array(10).fill(-1);
-        this.cellHeight = 223;
-        this.cellWidth = 422;
-        this.gridGap = 10;
+        this.cellHeight = document.getElementsByClassName("cell")[0].scrollHeight;
+        this.cellWidth = document.getElementsByClassName("cell")[0].scrollWidth;
+        this.gridGap = parseInt(getComputedStyle(gridElement).getPropertyValue("grid-row-gap"));
         this.currentElement = "";
         this.position = 1;
         this.block = "";
@@ -66,7 +69,7 @@ class Game{
     announceWinner(){
         this.triggerWinningStroke();
         setTimeout(() => {
-            this.showPopUp("Player "+ this.winner +" Wins", this.assets + "win.gif");
+            // this.showPopUp("Player "+ this.winner +" Wins", this.assets + "win.gif");
         }, this.winningTimeout);
     }
 
@@ -90,6 +93,34 @@ class Game{
             stroke.style.left = strokeTop + 'px';
             this.makeStrokeVisible(stroke);
             stroke.setAttribute("class",this.verticalAnimation);
+        }else{
+            // const canvas = document.getElementById("winnerCanvas");
+            // canvas.style.zIndex = "9999999";
+            // const ctx = canvas.getContext("2d");
+     
+            // let x = 0;
+            // let y = 0;
+            // const maxX = canvas.scrollWidth;
+            // const maxY = canvas.scrollHeight;
+            // const step = Math.sqrt((maxX * maxX) + (maxY * maxY)) / 900; 
+            
+            // function drawLine() {
+            //     ctx.clearRect(0, 0, canvas.scrollWidth, canvas.scrollHeight); 
+            //     ctx.beginPath();
+            //     ctx.moveTo(0, 0);
+            //     ctx.lineTo(x, y);
+            //     ctx.strokeStyle = strokeColor;
+            //     ctx.lineWidth = 2; 
+            //     ctx.lineCap = "round"; 
+            //     ctx.stroke();
+                
+            //     if (x < maxX && y < maxY) {
+            //         x += (maxX / maxY) * step;
+            //         y += step;
+            //         requestAnimationFrame(drawLine);
+            //     }
+            // }
+            // drawLine();
         }
     }
 

@@ -219,16 +219,23 @@ input[type="radio"]::before
 
 /* Playgrid */
 #playGrid{
+    position: relative !important;
     margin: 0;
     padding: 0;
     height: 700px;
     width: 100%;
-    border : 1px solid #000;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     grid-column-gap: 10px;
     grid-row-gap: 10px;
+}
+#winnerCanvas{
+    position: absolute;
+    height: 700px;
+    width: 100%;
+    z-index: -1;
+    /* background: lightblue; */
 }
 .br-top{
     border-top: 0 !important;
@@ -243,13 +250,16 @@ input[type="radio"]::before
     border-bottom: 0 !important;
 }
 .cell{
+    position: relative;
     width: 100% !important;
     border: 1px solid var(--neon-green);
     cursor: pointer;
     /* box-shadow: 0px 0px 10px var(--neon-green), 0px 0px 10px var(--neon-green); */
 }   
 .cell img{
-    height: 225px !important;
+    height: 80% !important;
+    position: absolute;
+    z-index: 1;
 }
 /* Playgrid */
 
@@ -274,17 +284,12 @@ input[type="radio"]::before
     font-size: 55px;
 }
 
-
-
-#playGrid{
-    position: relative !important;
-}
-
 #winningStrokeHorizontal,#winningStrokeVertical{
     position: absolute;
     background: #fff;
     animation-duration: 1s;
     visibility: hidden;
+    z-index: 999999;
 }
 #winningStrokeHorizontal{
     height: 8px;
@@ -314,3 +319,27 @@ input[type="radio"]::before
     to {height: 100%;}
 }
 /* Winning Stroke ANimation */
+
+@media screen and (max-width : 800px){
+    .box{
+        display: none;
+    }
+
+    .container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #playGrid{
+        position: relative !important;
+        border: 2px solid red;
+        width: 85%;
+        height: 500px;
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+    }
+    .cell img{
+        width: 80%;
+        position: absolute;
+    }
+}
