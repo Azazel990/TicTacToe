@@ -32,9 +32,10 @@ body {
 main{
     display: flex;
     justify-content: space-evenly;
-    align-items: center ; 
-    min-height: 75vh;
+    /* align-items: center ;  */
+    min-height: 800px;
     flex-direction: column;
+    /* border: 2px solid red; */
 }
 ul{
     padding-left: 0 !important;
@@ -324,7 +325,9 @@ input[type="radio"]::before
     .box{
         display: none;
     }
-
+    #main-menu{
+        transform: scale(1.5) !important;
+    }
     .container{
         display: flex;
         justify-content: center;
@@ -342,4 +345,5 @@ input[type="radio"]::before
         width: 80%;
         position: absolute;
     }
+
 }
