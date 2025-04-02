@@ -69,7 +69,7 @@ class Game{
     announceWinner(){
         this.triggerWinningStroke();
         setTimeout(() => {
-            // this.showPopUp("Player "+ this.winner +" Wins", this.assets + "win.gif");
+            this.showPopUp("Player "+ this.winner +" Wins", this.assets + "win.gif");
         }, this.winningTimeout);
     }
 
@@ -275,7 +275,6 @@ class Singleplayer extends Game{
         let isWinning = this.checkIfPlayerOrCpuIsWinning(2);
         if(isWinning){
             this.position = isWinning;
-            console.log("CPU WINNING");
         }else{
             isWinning = this.checkIfPlayerOrCpuIsWinning(1);
             if(isWinning){
@@ -289,7 +288,6 @@ class Singleplayer extends Game{
     }
     selectBestPosition(maxProfitCombos = []){
         const uniqueCells = this.getUniquePositions(maxProfitCombos); 
-        console.log("uniqueCells ", uniqueCells);
 
         return uniqueCells.length > 1 ? this.calculateProfitForEachCell(uniqueCells) : uniqueCells[0];
     }

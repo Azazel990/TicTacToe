@@ -332,7 +332,7 @@ input[type="radio"]::before
     }
     #playGrid{
         position: relative !important;
-        border: 2px solid red;
+        /* border: 2px solid red; */
         width: 85%;
         height: 500px;
         grid-column-gap: 0px;
