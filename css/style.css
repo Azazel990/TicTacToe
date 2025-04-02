@@ -289,7 +289,7 @@ input[type="radio"]::before
     background: #fff;
     animation-duration: 1s;
     visibility: hidden;
-    z-index: 999999;
+    z-index: 2;
 }
 #winningStrokeHorizontal{
     height: 8px;
@@ -333,7 +333,7 @@ input[type="radio"]::before
     #playGrid{
         position: relative !important;
         /* border: 2px solid red; */
-        width: 85%;
+        width: 90%;
         height: 500px;
         grid-column-gap: 0px;
         grid-row-gap: 0px;
