@@ -325,7 +325,7 @@ input[type="radio"]::before
     .box{
         display: none;
     }
-    #main-menu{
+    main{
         transform: scale(1.5) !important;
     }
     .container{
@@ -345,5 +345,4 @@ input[type="radio"]::before
         width: 80%;
         position: absolute;
     }
-
 }
